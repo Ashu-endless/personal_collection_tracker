@@ -11,3 +11,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav {
+  background: rgb(119 137 188);
+  color: white;
+  display: grid;
+  padding: 3px;
+  color: white;
+  grid-auto-flow: column;
+  justify-content: space-between;
+}
+
+
+.progress{
+  height: 1.5rem;
+border-radius: .25rem;
+background: linear-gradient(to right, rgb(40 45 59) 25%, rgb(53 76 108) 25%, rgb(136, 93, 218) 0%, rgba(110, 62, 201, 0.72) 100%);
+margin: 5px 0px;
+color: white;
+font-weight: bold;
+text-align: center;
+padding: 0 10px;
+font-size: small;
+display: flex;
+align-items: center;
+}
+
+
+.book {
+  display: grid;
+}
+
+.img {
+  height: 30vh;
+  border: 1px solid black;
+  border-radius: 3px;
+  /* aspect-ratio: 1/2; */
+  width: 30vw;
+}
+
+.bookDiv {
+  display: flex;
+  grid-auto-flow: column;
+  gap: 1rem;
+}
+
+
+.container {
+  display: grid;
+  border: 2px rgb(136, 93, 218) dashed;
+  padding: 5px;
+  margin: 3px;
+  margin-top: 1rem;
+  overflow-x: scroll;
+  border-radius: 3px;
+}
