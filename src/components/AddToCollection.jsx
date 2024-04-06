@@ -1,5 +1,8 @@
 import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 
 const test_collection = {
     name : "sample collection",
@@ -9,7 +12,7 @@ const test_collection = {
       {name:"personal_review",type:"text"},
     ],
     collections : []
-  }
+  } 
 
 function AddToCollection({testdata}) {
 
@@ -30,6 +33,18 @@ function AddToCollection({testdata}) {
         console.log(temp2)
 
         localStorage.setItem("Collections_Detail",JSON.stringify(temp2));
+        withReactContent(Swal).fire({
+            text:`added to your ${collection_name.id} collection`,
+            confirmButtonText:<a style={{border: '0',borderRadius: '.25em',background: 'initial',
+    backgroundColor: '#7066e0',
+            color: '#fff',
+            fontSize: '1em',
+            textDecoration:"none",
+            padding:"10px"
+        }} href="/personal_collection_tracker" >ok</a>,
+            
+            
+        })
     }
 
     if(param_Collection)
@@ -88,11 +103,19 @@ function FieldCreator({name,type,setdata,data}) {
         case "url":
             return (<div className="fieldDiv">
                 <label htmlFor="">{name}</label>
+                <div style={{background: '#1e1929',display:"grid"}}>
+
+                <span style={{fontSize:"x-small"}} >url</span>
                 <textarea placeholder="enter url here" className="classic" onInput={(e)=>{        
         let temp = {...data};
-        temp[name] = e.target.value
+        temp[name] = temp[name] ? {...temp[name],"url":e.target.value} : {display_text:"","url":e.target.value};
         setdata(temp)}} type="text" />
-                {/* <img src={data[name]} alt="" /> */}
+                <span style={{fontSize:"x-small"}}  >display text</span>
+                <textarea placeholder="enter display text here" className="classic" onInput={(e)=>{        
+        let temp = {...data};
+        temp[name] = temp[name] ? {...temp[name],"display_text":e.target.value} : {url:"","display_text":e.target.value}
+        setdata(temp)}} type="text" />
+                </div>
 
             </div>);
         case "progress":

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { PlusCircleDotted } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
+import { SampleDesign } from "./SampleStyles";
 const test_collection = {
     name : "sample collection",
     fields : [
@@ -37,24 +38,25 @@ function ViewCollection({name,fields=[],collections=[]}) {
     return (<div className='container'>
     <div className="collection-containerTitle">
       <b >{params.id}</b>
-      <Link to={"./add"} style={{color:"white"}}>
-        Add
+      <Link className="btn-pos" to={"./add"} style={{color:"white"}}>
+        Add New
       <PlusCircleDotted/>
       </Link>
     </div>
     <div className='bookDiv'>
 
-    {(param_Collection.collections || []).map((book,index)=><>
+    {(param_Collection.collections || []).map((book,index)=><div>
     <div style={param_Collection.coverDiv_style} >
-        <Link to={`./${index}`}>
-        <b>{index}</b>
-        </Link>
+        
         {param_Collection.cover_fields.map((field)=><DisplayCoverElem cover_field={field} data_={param_Collection.collections[index]} i={index} key={index} />)}
 
 
        
     </div>
-    </>)}
+    <Link to={`./${index}`}>
+        <b>view</b>
+        </Link>
+    </div>)}
     </div>
 
   <div>
@@ -65,15 +67,15 @@ function ViewCollection({name,fields=[],collections=[]}) {
 
 export default ViewCollection;
 
-
-function DisplayCoverElem({cover_field,data_,i}){
+ 
+export function DisplayCoverElem({cover_field,data_,i}){
   console.log(i)
   console.log(data_,cover_field.name)
   const data = data_[cover_field.name]
   switch (cover_field.type) {
     case "text":
         return (
-        <div style={cover_field.style} >{data}</div>
+        <div style={{...SampleDesign[cover_field.type][cover_field.design_name],...cover_field.style}} >{data}</div>
         )
     case "img_link":
         return (
@@ -88,7 +90,7 @@ function DisplayCoverElem({cover_field,data_,i}){
     
     case "url":
         return (
-           <button> {data} </button>
+           <Link to={data.url} > {data.dsplay_text || ""} </Link>
           );
     
     case "progress":

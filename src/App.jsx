@@ -38,10 +38,10 @@ function App() {
 
   return (<>
     <nav className="App">
-      <Link to={"/"}>
+      <Link to={"/personal_collection_tracker"}>
       personal collections
       </Link>
-      <Link to={"/Add_NewCollection"}>New
+      <Link to={"personal_collection_tracker/Add_NewCollection"}>New
       </Link>
     </nav>
 
@@ -69,17 +69,19 @@ function App() {
     </div> */}
 
     <Routes>
-      <Route path='/collection/:id' element={<ViewCollection testData={MyCollections}/>}   />
-      <Route path='/collection/:id/add' element={<AddToCollection testData={MyCollections}/>}/>
-      <Route path='/collection/:id/:index' element={<ViewElement testData={MyCollections}/>}/>
-      <Route path='/add' element={<AddNew testData={MyCollections}/>}/>
-      <Route path='/veiw' element={<ViewElement/>}/>
-      <Route path='/Add_NewCollection' element={<NewCollection testData={MyCollections} settestdata={setMyCollections}/>}/>
-      <Route path='/' element={    <div style={{border:"5px solid blue",color:"white",padding:"5px"}}>
+      <Route path='personal_collection_tracker/collection/:id' element={<ViewCollection testData={MyCollections}/>}   />
+      <Route path='personal_collection_tracker/collection/:id/add' element={<AddToCollection testData={MyCollections}/>}/>
+      <Route path='personal_collection_tracker/collection/:id/:index' element={<ViewElement testData={MyCollections}/>}/>
+      <Route path='personal_collection_tracker/add' element={<AddNew testData={MyCollections}/>}/>
+      <Route path='personal_collection_tracker/veiw' element={<ViewElement/>}/>
+      <Route path='personal_collection_tracker/Add_NewCollection' element={<NewCollection testData={MyCollections} settestdata={setMyCollections}/>}/>
+      <Route path='/personal_collection_tracker' element={    <div  style={{margin:"10px"}} className='container-righticon'>
 
-<div>My Collections</div>
+<div className='titlediv'  >My Collections</div>
 {Object.keys(MyCollections).map((coll_name)=><Link to={`collection/${coll_name}`} style={{"color":"white"}} > <div> {coll_name}</div></Link>)}
 </div>}/>
+
+
     </Routes>
   </>
   );

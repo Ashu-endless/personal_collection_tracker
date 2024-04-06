@@ -41,6 +41,10 @@
   display: grid;
   grid-auto-flow: column;
   gap: 5px;
-  padding: 5px;
-  width: fit-content;
+  /* padding: 5px; */
+  width: -moz-fit-content;
+  /* width: fit-content; */
+  /* background: red; */
+  align-items: center;
+  padding: 3px;
 }

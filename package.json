@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ashu_endless/dataform": "^0.2.29",
+    "@ashu_endless/dataform": "^0.2.30",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,6 +14,9 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
+    "sweetalert-react": "^0.4.11",
+    "sweetalert2": "^11.10.7",
+    "sweetalert2-react-content": "^5.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
